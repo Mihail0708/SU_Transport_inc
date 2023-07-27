@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+    <div class="background">
+        <br>
+        <div class="table-responsive">
+            {% if object_list %}
+                <table class="table">
+                    <thead>
+                    <tr class="loads_tr_th">
+                        <th scope="col">Load#</th>
+                        <th scope="col">Pickup</th>
+                        <th scope="col">Delivery</th>
+                        <th scope="col">Pickup Date</th>
+                        <th scope="col">Pickup Time</th>
+                        <th scope="col">Delivery Date</th>
+                        <th scope="col">Delivery Time</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in page_obj %}
+                        <tr class="loads_tr_td">
+                            <td>{{ object.Load_Number }}</td>
+                            <td>{{ object.Pickup }}</td>
+                            <td>{{ object.Delivery }}</td>
+                            <td>{{ object.Pickup_Date }}</td>
+                            <td>{{ object.Pickup_Time }}</td>
+                            <td>{{ object.Delivery_Date }}</td>
+                            <td>{{ object.Delivery_Time }}</td>
+                            {% if object.user %}
+                                <td>{{ object.user.username }}</td>
+                            {% else %}
+
+                            {% if request.user.is_staff %}
+                                {% if object.is_completed %}
+                                    <td><a class="back" href="{% url 'info load' pk=object.pk %}">Completed</a></td>
+                                {% else %}
+                                    <td><a class="back" href="{% url 'info load' pk=object.pk %}">Info</a></td>
+                                {% endif %}
+                            {% elif request.user.is_driver %}
+
+                            {% if object.is_completed %}
+                                <td><a class="back" disabled="True" href="">Completed</a></td>
+                            {% else %}
+                                <td><a class="back" href="{% url 'get load' pk=object.pk %}">Get it</a></td>
+                            {% endif %}
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="center_text">
+                    <h2 >There is no loads to display!</h2>
+                    {% if request.user.is_staff %}
+                        <a class="back" href="{% url 'create load' %}">Add loads</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="my_paginator">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span>
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+            {% endif %}
+        </div>
+    <br>
+        {% if object_list and request.user.is_staff %}
+            <a class="back" href="{% url 'create load' %}">Add more loads</a>
+        {% endif %}
+    </div>
+{% endblock %}

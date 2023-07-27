@@ -1,0 +1,149 @@
+.myform {
+    background-color: beige;
+    width: 50%;
+    border-radius: 16px;
+    padding: 5%;
+    overflow: hidden;
+    margin: auto;
+}
+.myform h1 {
+    text-align: center;
+}
+
+.my-justify-content-end {
+    justify-content: flex-end;
+}
+.myform p {
+    text-align: center;
+}
+
+.myform h3 {
+    text-align: center;
+}
+
+.myform input {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    padding: 1% 5%;
+}
+.myform button, .back {
+    background-color: #c55c52;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 1% 5%;
+    width: 50%;
+    margin: 2% auto 0 auto;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+.myform form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.myfrom div {
+    width: 50%;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.myform label {
+    font-size: smaller;
+}
+
+.center_text {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../images/whse_image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 23rem;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.center_text a {
+    max-width: 200px;
+}
+
+.service_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service_wrapper {
+    height: 20rem;
+    width: 100%;
+}
+.background {
+    height: 26rem;
+    background-color: beige;
+}
+.my_paginator a{
+    text-decoration: none;
+}
+.my_paginator {
+    margin: 1%;
+}
+@media (max-width: 780px) {
+    .my-justify-content-end {
+        justify-content: space-around;
+    }
+    .container.mt-3 {
+        text-align: center;
+    }
+    .myform {
+        min-width: 90%;
+    }
+}
+@media (max-width: 420px) {
+    .myform button {
+        width: 80%;
+    }
+    thead .message_tr_th th:nth-child(2) {
+        display: none;
+    }
+    tbody .message_tr_td td:nth-child(2) {
+        display: none;
+    }
+    tbody .loads_tr_td td:nth-child(8){
+        font-size: 12px;
+    }
+}
+@media (max-width: 885px) {
+    thead .loads_tr_th th:nth-child(5),.loads_tr_th th:nth-child(7) {
+        display: none;
+    }
+    tbody .loads_tr_td td:nth-child(5),.loads_tr_td td:nth-child(7) {
+        display: none;
+    }
+}
+@media (max-width:665px) {
+    thead .loads_tr_th th:nth-child(4),.loads_tr_th th:nth-child(6) {
+        display: none;
+    }
+    tbody .loads_tr_td td:nth-child(4),.loads_tr_td td:nth-child(6) {
+        display: none;
+    }
+    thead .message_tr_th th:nth-child(3) {
+        display: none;
+    }
+    tbody .message_tr_td td:nth-child(3) {
+        display: none;
+    }
+    thead .driver_loads_th th:nth-child(2),.driver_loads_th th:nth-child(3) {
+        display: none;
+    }
+    tbody .driver_loads_td td:nth-child(2),.driver_loads_td td:nth-child(3) {
+        display: none;
+    }
+}

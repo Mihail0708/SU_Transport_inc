@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="list.__getitem__" />
+          <option value="list.values" />
+          <option value="dict.__getitem__" />
+          <option value="int.__getitem__" />
+          <option value="person_lab.roject" />
+          <option value="cache.wrapper.log" />
+          <option value="int.__setitem__" />
+          <option value="random.random.randint" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

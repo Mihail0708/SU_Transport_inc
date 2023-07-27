@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="myform">
+        <h1>Contact Us</h1>
+        <h3>SU Transportation Inc</h3>
+        <p>566 Rock Road Dr Unit 2</p>
+        <p>East Dundee, IL 60118</p>
+        <p>Tel: 847.378.8917; Fax: 847.594.6044</p>
+        <form method="post" action="{% url 'contact us' %}">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Send</button>
+        </form>
+    </div>
+{% endblock %}

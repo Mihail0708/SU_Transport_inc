@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+    <div class="background">
+    <br>
+    <div class="card" style="max-height: 400px">
+  <div class="row g-0" style="max-height: 400px">
+    <div class="col-5 col-sm-4" style="max-height: 400px">
+        {% if employee.profile_picture %}
+        <img src="{{ employee.profile_picture.url }}" class="img-fluid w-100" alt="my image" style="max-height: 300px; max-width: 250px">
+        {% else %}
+        <img src="{% static 'images/person.png' %}" class="img-fluid w-100" alt="card-horizontal-image" style="max-height: 300px; max-width: 250px">
+        {% endif %}
+    </div>
+    <div class="col-7 col-sm-8" style="max-height: 400px">
+      <div class="card-body">
+        <h5 class="card-title">Username: {{ employee.username }}</h5>
+          {% if employee.get_full_name %}
+          <h5 class="card-title">Full Name: {{ employee.get_full_name }}</h5>
+          {% endif %}
+        <p class="card-text">Email: {{ employee.email }}</p>
+      {% if employee.gender %}
+        <p class="card-text">Gender: {{ employee.gender }}</p>
+      {% endif %}
+          <a href="{% url 'profile edit' pk=employee.pk %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'profile delete' pk=employee.pk %}" class="btn btn-primary">Delete</a>
+      {% if employee.is_driver %}
+          <a href="{% url 'profile loads' pk=employee.pk %}" class="btn btn-primary">My loads</a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+{% endblock %}

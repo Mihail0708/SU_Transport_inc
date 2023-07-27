@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="myform">
+        <h1>
+            Are you sure you want to delete this message?
+        </h1>
+        <form method="post" action="{% url 'message delete' object.pk %}">
+            {% csrf_token %}
+            <button>Yes</button>
+            <a class="back" href="{% url 'messages' %}">Go Back</a>
+        </form>
+    </div>
+{% endblock %}

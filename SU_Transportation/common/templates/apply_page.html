@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="myform">
+    <h1>Driver's application for employment</h1>
+    <form method="post" action="{% url 'driver apply' %}">
+        {% csrf_token %}
+        {{ driver_info_form.as_div }}
+        {{ driver_address_form.as_div }}
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+{% endblock %}
+

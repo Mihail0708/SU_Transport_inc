@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="myform">
+    <h1>Complete the load</h1>
+    <form enctype="multipart/form-data" method="post" action="{% url 'complete load' pk=object.pk %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Complete</button>
+    </form>
+</div>
+{% endblock %}

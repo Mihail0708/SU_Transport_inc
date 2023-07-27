@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="background">
+    <br>
+        <div class="table-responsive">
+        {% if driver_loads %}
+        <table class="table">
+        <thead>
+            <tr class="driver_loads_th">
+                <th scope="col">Load#</th>
+                <th scope="col">Pickup</th>
+                <th scope="col">Delivery</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for load in driver_loads %}
+                <tr class="driver_loads_td">
+                    <td>{{ load.Load_Number}}</td>
+                    <td>{{ load.Pickup }}</td>
+                    <td>{{ load.Delivery }}</td>
+                    <td><a class="back" href="{% url 'info load' pk=load.pk %}">Load Info</a></td>
+                    {% if load.is_completed %}
+                        <td><a class="back" disabled="True" href="">Completed</a></td>
+                    {% else %}
+                        <td><a class="back" href="{% url 'complete load' pk=load.pk %}">Complete</a></td>
+                    {% endif %}
+                    <td><a class="back" href="{% url 'return load' pk=load.pk %}">Return</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        {% else %}
+            <div class="center_text">
+                <h2 >There is no loads to display!</h2>
+            </div>
+        {% endif %}
+        </div>
+    <div class="my_paginator">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span>
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+            {% endif %}
+        </div>
+    <br>
+    </div>
+{% endblock %}

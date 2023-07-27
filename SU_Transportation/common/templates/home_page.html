@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="background">
+    <br>
+    <div id="demo" class="carousel slide" data-bs-ride="carousel" style="height: 23rem; width: 80%; margin: auto">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+  <div class="carousel-inner" style="height: 100%">
+    <div class="carousel-item active" style="height: 100%">
+      <img src="{% static 'images/Image1.jpg' %}" alt="img1" class="d-block w-100" style="height: 100%; width: 100%">
+    </div>
+    <div class="carousel-item" style="height: 100%">
+      <img src="{% static 'images/Image2.jpg' %}" alt="img2" class="d-block w-100" style="height: 100%; width: 100%">
+    </div>
+    <div class="carousel-item" style="height: 100%">
+      <img src="{% static 'images/Image3.png' %}" alt="img3" class="d-block w-100" style="height: 100%; width: 100%">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+    </div>
+
+{% endblock %}

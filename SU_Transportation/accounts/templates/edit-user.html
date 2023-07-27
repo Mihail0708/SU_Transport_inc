@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="myform">
+    <h1>Edit Profile</h1>
+    <form method="post" action="{% url 'profile edit' pk=object.pk %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.username.errors }}
+        {{ form.username.label }}
+        {{ form.username }}
+        {{ form.first_name.errors }}
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+        {{ form.last_name.errors }}
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+        {{ form.email.errors }}
+        {{ form.email.label }}
+        {{ form.email }}
+        {{ form.profile_picture.errors }}
+        {{ form.profile_picture.label }}
+        {{ form.profile_picture }}
+        {{ form.gender.errors }}
+        {{ form.gender.label }}
+        {{ form.gender }}
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+{% endblock %}

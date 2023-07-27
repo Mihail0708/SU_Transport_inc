@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="background">
+        <br>
+        <div class="table-responsive">
+            {% if object_list %}
+                <table class="table">
+                    <thead>
+                    <tr class="message_tr_th">
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Seen</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                        <tr class="message_tr_td">
+                            <td>{{ object.Name }}</td>
+                            <td>{{ object.Email }}</td>
+                            <td>{{ object.Phone }}</td>
+                            <td>{% if object.is_red %}&#x2611;{% endif %}</td>
+                            <td><a class="back" href="{% url 'message read' pk=object.pk %}">Read</a></td>
+                            <td><a class="back" href="{% url 'message delete' pk=object.pk %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="center_text">
+                    <h2 >There is no messages to display!</h2>
+                </div>
+            {% endif %}
+        </div>
+        <div class="my_paginator">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span>
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="background">
+        <br>
+    <div class="card">
+        <div class="card-body" style="max-height: 20rem; overflow-y: scroll">
+            <h2 class="card-title">Message from: {{ object.Name }}</h2>
+            <h5 class="card-title">phone: {{ object.Phone }}</h5>
+            <h5 class="card-title">email: {{ object.Email }}</h5>
+            <p class="card-text">{{ object.Message }}</p>
+        </div>
+    </div>
+        <br>
+    <a class="back" href="{% url 'messages' %}">Back</a>
+    </div>
+{% endblock %}

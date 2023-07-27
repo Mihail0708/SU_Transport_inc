@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card-group">
+    {% if object_list %}
+        {% for object in object_list %}
+        <div class="card">
+            <div class="service_wrapper">
+                <img src="{{ object.service_picture.url }}" class="service_image" alt="service-image">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ object.service_name }}</h5>
+                <p class="card-text">{{ object.service_description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="center_text">
+            <h2 >There is no services to display!</h2>
+        </div>
+{% endif %}
+    </div>
+{% endblock %}

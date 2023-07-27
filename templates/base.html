@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/MyStyles.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <title>Title</title>
+</head>
+<body style="margin:0 1rem 0 1rem">
+<div class="container mt-3">
+  <h1>SU Transportation Inc</h1>
+ <ul class="nav my-justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home page' %}">Home</a>
+    </li>
+    {% if not request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'driver apply' %}">Drive for us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'services details' %}">Our Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact us' %}">Contact Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login user' %}">Login</a>
+        </li>
+    {% else %}
+        {% if request.user.is_driver %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'details load' %}">loads</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'services details' %}">Our Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile details' pk=request.user.pk %}">My profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout user' %}">Logout</a>
+            </li>
+        {% elif request.user.is_staff %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'details load' %}">Loads</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'services details' %}">Our Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'messages' %}">Messages {% if messages %}<span style="color: red">{{ messages.count }}</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile details' pk=request.user.pk %}">My profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout user' %}">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'driver apply' %}">Drive for us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'services details' %}">Our Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact us' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile details' pk=request.user.pk %}">My profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout user' %}">Logout</a>
+            </li>
+        {% endif %}
+    {% endif %}
+  </ul>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2023 SU Transportation, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-body-secondary" href="#"><i class="fab fa-facebook-square"></i></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

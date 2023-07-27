@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="background">
+    <br>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Load# {{ object.Load_Number }}</li>
+                <li class="list-group-item">Pickup: {{ object.Pickup_Address }}, {{ object.Pickup }}</li>
+                <li class="list-group-item">Delivery: {{ object.Delivery_Address }}, {{ object.Delivery }}</li>
+                <li class="list-group-item">Pickup Date: {{ object.Pickup_Date }}, {{ object.Pickup_Time }}</li>
+                <li class="list-group-item">Delivery Date: {{ object.Delivery_Date }}, {{ object.Delivery_Time }}</li>
+                <li class="list-group-item">Weight: {{ object.Weight }}</li>
+                <li class="list-group-item">Commodity: {{ object.Commodity }}</li>
+            </ul>
+        </div>
+    <br>
+        {% if request.user.is_staff %}
+            {% if object.Load_POD %}
+                <a class="back" href="{{ object.Load_POD.url }}">Load BOL</a>
+            {% endif %}
+            <a class="back" href="{% url 'delete load' pk=object.pk %}">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}
