@@ -9,7 +9,7 @@ class DriverApplicationForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['address', 'Date_applied']
         widgets = {
-            'Data_of_Birth': forms.DateInput(attrs={'type': 'date'}),
+            'Date_of_Birth': forms.DateInput(attrs={'type': 'date'}),
         }
 
 

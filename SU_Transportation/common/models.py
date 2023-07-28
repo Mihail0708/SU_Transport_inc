@@ -17,7 +17,7 @@ class ApplicationAddress(models.Model):
 class DriverApplication(models.Model):
     First_Name = models.CharField(validators=(MinLengthValidator(2), MaxLengthValidator(15), only_letters))
     Last_Name = models.CharField(validators=(MinLengthValidator(2), MaxLengthValidator(15), only_letters))
-    Data_of_Birth = models.DateField()
+    Date_of_Birth = models.DateField()
     Date_applied = models.DateTimeField(auto_now_add=True)
     Cell_Phone = models.CharField(validators=(MaxLengthValidator(10), MinLengthValidator(10), only_integers))
     email = models.EmailField(unique=True)
