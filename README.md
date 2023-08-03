@@ -17,7 +17,7 @@ SU_Transport_inc is a web application built using Django, designed to help a tru
   <li>Python</li>
   <li>HTML</li>
   <li>CSS</li>
-  <li>Bootrstarp5/li>
+  <li>Bootrstarp5</li>
   <li>PostgreSQL</li>
 </ul>
 
