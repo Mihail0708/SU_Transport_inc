@@ -15,12 +15,11 @@ class DetailsLoadsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages = ContactUsModel.objects.filter(is_red=False)
+        messages = ContactUsModel.objects.filter(is_red=False).all()
 
         context.update({
             'messages': messages,
         })
-
         return context
 
 
