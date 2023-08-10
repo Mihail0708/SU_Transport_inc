@@ -13,8 +13,6 @@ services:
       - /tmp/SU_Transportation/media:/app/media
     platform: linux/amd64
     command: gunicorn --bind=0.0.0.0:8000 SU_Transportation.wsgi:application
-    links:
-      - postgres
   postgres:
     image: postgres
     restart: always
