@@ -5,10 +5,20 @@ the services offered, freights, contact details, and more.</p>
 
 <h3>Features</h3>
 <ul>
-  <li># Home Page</li>
-  <li># Contact Us</li>
-  <li># Loads</li>
-  <li># Our Services</li>
-  <li># Messages</li>
-  <li># My Profile</li>
+  <li>Home Page</li>
+  <li>Contact Us</li>
+  <li>Loads</li>
+  <li>Our Services</li>
+  <li>Messages</li>
+  <li>My Profile</li>
 </ul>
+
+<h3>Technologies Used</h3>
+<ul>
+  <li>Django</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Bootstrap</li>
+  <li>PostgreSQL</li>
+</ul>
+
