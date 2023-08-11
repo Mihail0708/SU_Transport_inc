@@ -1,6 +1,8 @@
+import os
+
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -25,3 +27,26 @@ def send_greetings_email(sender, instance, created, **kwargs):
             recipient_list=[to],
             html_message=html_message
         )
+
+
+@receiver(post_delete, sender=UserModel)
+def delete_related_file(sender, instance, **kwargs):
+    if instance.profile_picture:
+        file_path = instance.profile_picture.path
+        if os.path.exists(file_path):
+            os.remove(file_path)
+
+
+@receiver(pre_save, sender=UserModel)
+def pre_save_image(sender, instance, *args, **kwargs):
+    try:
+        old_img = instance.__class__.objects.get(id=instance.id).profile_picture.path
+        try:
+            new_img = instance.profile_picture.path
+        except:
+            new_img = None
+        if new_img != old_img:
+            if os.path.exists(old_img):
+                os.remove(old_img)
+    except:
+        pass
