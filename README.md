@@ -22,5 +22,5 @@ the services offered, freights, contact details, and more.</p>
   <li>PostgreSQL</li>
 </ul>
 
-<p>The site is uploaded to AWS. The url is: http://ec2-3-123-178-146.eu-central-1.compute.amazonaws.com/messages/</p>
+
 
